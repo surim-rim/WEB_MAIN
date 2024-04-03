@@ -11,14 +11,16 @@
     <title>LOL 메인화면</title>
     <script type="text/javascript" src="js/Basic_js_test.js"></script>
     <script type="text/javascript" src="js/search.js" defer></script>
-
+    <script type="text/javascript" src="js/data_type.js" defer></script>
+    <script type="text/javascript" src="js/pop_up.js" defer></script>
 
 </head>
-<body style="background-color: rgb(173, 235, 239);">
+
+<body style="background-color: rgb(173, 235, 239);" onload="pop_up();">
 
       <nav class="navbar navbar-expand-lg" style="background-color: rgb(209, 189, 242);">
         <div class="container-fluid">
-          <img src="image/RIOT GAMES.png" alt="Logo" width="145" height="47" class="d-inline-block align-text-top">
+          <img src="image/RIOT GAMES.png" alt="Logo" width="145" height="47" class="d-inline-block align-text-top" onmouseover="over(this)" onmouseout="out(this)">
           <a class="navbar-brand" href="http://127.0.0.1:5500/index.html">홈페이지 테스트</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,9 +55,9 @@
               </li>
             </ul>
             <a class="navbar-brand">검색어 입력 : </a>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="검색어 입력" aria-label="Search">
-              <button class="btn btn-outline-success" id="search_btn" type="submit">검색</button>
+            <form class="d-flex" role="search" onsubmit="return googleSearch();">
+              <input class="form-control me-2" id="search_input" name="q" type="search" placeholder="키워드 입력" aria-label="Search">
+              <button class="btn btn-outline-success" id="search_btn" type="submit">검색하기</button>
             </form>
           </div>
         </div>
@@ -70,6 +72,7 @@
             <a href="https://www.leagueoflegends.com/ko-kr/how-to-play/" style="color: white; text-decoration:none;" target="_blank">게임정보</a> 기본정보   챔피언   패치 노트   새소식   등 (메뉴 정보 입력하기)</h3>
     </div>
   -->
+  
     
     <div style="display: flex; justify-content:center;">
     <img src="image/kda.jpg" class="img-fluid" width="1280" height="768">
