@@ -25,9 +25,16 @@ function show_clock(){
     setTimeout(show_clock, 1000); //1초마다 갱신
 }
 
+/* 이걸로 써도 되고 아래 걸로 써도 됨
+const over = (obj) => {
+    obj.src = "image/LOGO.png";
+};
+*/
+
 function over(obj){
     obj.src="image/lol_logo.png";
 }
+
 
 function out(obj){
     obj.src="image/RIOT GAMES.png";
