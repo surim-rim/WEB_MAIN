@@ -14,7 +14,7 @@
 </head>
 
 
-<body style="background-color: rgb(255, 199, 199);">
+<body class="text-center" style="background-color: rgb(255, 199, 199);" onload="init();" >
 
 <section class="vh-100">
     <div class="container-fluid h-custom">
@@ -47,25 +47,35 @@
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <input type="email" id="form3Example3" class="form-control form-control-lg" name="id"
-                  placeholder="Enter a valid email address" />
+                  placeholder="아이디 입력"/>
                 <label class="form-label" for="form3Example3">이메일</label>
               </div>
   
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
                 <input type="password" id="form3Example4" class="form-control form-control-lg" name="password"
-                  placeholder="Enter password" />
+                  placeholder="패스워드 입력" />
                 <label class="form-label" for="form3Example4">패스워드</label>
               </div>
   
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
+
+              <!--
               <div class="form-check mb-0">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
                   나를 기억하기
                 </label>
               </div>
+            -->
+
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me" id="idSaveCheck">아이디 기억
+              </label>
+            </div>
+            
               <a href="#!" class="text-body">패스워드 찾기</a>
             </div>
   
@@ -118,8 +128,6 @@
 
 
 
-
-</body>
 
   <hr>
     <div style="display: flex; justify-content:center;">
