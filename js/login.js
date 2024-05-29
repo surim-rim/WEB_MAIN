@@ -85,6 +85,22 @@ if (!sanitizedPassword) {
 return false;
 }
 
+//검사 마무리 단계 쿠키 저장, 최하단 submit 이전
+if(idsave_check.checked == true){
+    alert("쿠키를 저장합니다.", emailValue);
+    setCookie("id", emailValue, 1); //1일 저장
+    alert("쿠키 값 :" + emailValue);
+}
+else
+{   //아이디 체크x
+    setCookie("id", emailValue.value, 0); //날짜를 0 - 쿠키 삭제
+}
+
+    console.log('이메일:', emailValue);
+    console.log('비밀번호:', passwordValue);
+    session_set(); //세션 생성
+    loginForm.submit();
+};
 
 
 function setCookie(name, value, expiredays){
@@ -109,25 +125,8 @@ function getCookie(name){
     return ;
 }
 
-//검사 마무리 단계 쿠키 저장, 최하단 submit 이전
-if(idsave_check.checked == true){
-    alert("쿠키를 저장합니다.", emailValue);
-    setCookie("id", emailValue, 1); //1일 저장
-    alert("쿠키 값 :" + emailValue);
-}
-else
-{   //아이디 체크x
-    setCookie("id", emailValue.value, 0); //날짜를 0 - 쿠키 삭제
-}
-
-    console.log('이메일:', emailValue);
-    console.log('비밀번호:', passwordValue);
-    session_set(); //세션 생성
-    loginForm.submit();
-};
-
 function session_check(){ //세션 검사
-    if(sessionStorage.getItem("Session_Storage_test")){
+    if(sessionStorage.getItem("Session_Storage_id")){
         alert("이미 로그인 되었습니다.");
         location.href='../login/index_login.html'; //로그인된 페이지로 이동
     }
@@ -175,9 +174,10 @@ const checkConsecutiveNumbers = (str, length) => {
 
 function session_set(){ //세션 저장
     let session_id = document.querySelector("#form3Example3");
-    let session_pass = document.querySelector("form3Example4"); //DOM 트리에서 pass 검색
+    let session_pass = document.querySelector("#form3Example4"); //DOM 트리에서 pass 검색
     if(sessionStorage){
-        sessionStorage.setItem("Session_Storage_test", session_id.value);
+        let en_text = encrypt_text(session_pass.value);
+        sessionStorage.setItem("Session_Storage_id", session_id.value);
         sessionStorage.setItem("Session_Storage_pass", en_text);
     }else{
         alert("로컬 스토리지 지원 x");
@@ -186,7 +186,7 @@ function session_set(){ //세션 저장
 
 function session_get(){ //세션 읽기
     if(sessionStorage){
-        return sessionStorage.getItem("Session_Storage_test");
+        return sessionStorage.getItem("Session_Storage_pass");
     }else{
         alert("세션 스토리지 지원 x");
     }
@@ -228,4 +228,13 @@ function decrypt_text(){
     const eb = session_get();
     const b = this.decodeByAES256(rk, eb);
     console.log(b);
+}
+
+function init_logined(){
+    if(sessionStorage){
+        decrypt_text(); //복호화 함수
+    }
+    else{
+        alert("세션 스토리지 지원 x")
+    }
 }

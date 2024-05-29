@@ -13,4 +13,4 @@ function logout(){
     location.href='../index.html';
 }
 
-document.getElementById("logout_bttt").addEventListener('click', logout);
+document.getElementById("login_btn").addEventListener('click', logout);
