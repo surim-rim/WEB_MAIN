@@ -47,15 +47,19 @@
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <input type="email" id="form3Example3" class="form-control form-control-lg" name="id"
-                  placeholder="아이디 입력"/>
+                  placeholder="이메일 입력 (10글자 이하)"/>
                 <label class="form-label" for="form3Example3">이메일</label>
               </div>
   
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
                 <input type="password" id="form3Example4" class="form-control form-control-lg" name="password"
-                  placeholder="패스워드 입력" />
+                  placeholder="패스워드 입력 (15글자 이하 / 특수문자 1개 이상 / 대소문자 1개 이상)" />
                 <label class="form-label" for="form3Example4">패스워드</label>
+              </div>
+
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0">아이디나 비밀번호에 3글자 이상 반복x / 아이디나 비밀번호에 연속된 숫자 2개 이상x</p>
               </div>
   
             <div class="d-flex justify-content-between align-items-center">
