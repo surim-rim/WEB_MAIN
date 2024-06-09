@@ -164,3 +164,105 @@ function init_logined(){
     }
 }
 
+/* 10주차 응용 문제
+// login_count 함수: 로그인 횟수를 증가하고 쿠키에 저장하는 함수
+const login_count = () => {
+    let loginCnt = getCookie("login_cnt"); // 기존 로그인 횟수 가져오기
+    loginCnt = loginCnt ? parseInt(loginCnt) + 1 : 1; // 기존 횟수가 없으면 1로 초기화
+    setCookie("login_cnt", loginCnt, 1); // 쿠키에 로그인 횟수 저장 (1일 동안 유지)
+    alert("로그인 횟수: " + loginCnt);
+};
+
+// logout_count 함수: 로그아웃 횟수를 증가하고 쿠키에 저장하는 함수
+const logout_count = () => {
+    let logoutCnt = getCookie("logout_cnt"); // 기존 로그아웃 횟수 가져오기
+    logoutCnt = logoutCnt ? parseInt(logoutCnt) + 1 : 1; // 기존 횟수가 없으면 1로 초기화
+    setCookie("logout_cnt", logoutCnt, 1); // 쿠키에 로그아웃 횟수 저장 (1일 동안 유지)
+    alert("로그아웃 횟수: " + logoutCnt);
+};
+
+// 로그인 버튼 클릭 시 login_count 함수 호출
+document.getElementById("login_btn").addEventListener('click', login_count);
+
+// 로그아웃 버튼 클릭 시 logout_count 함수 호출
+document.getElementById("logout_btn").addEventListener('click', logout_count);
+*/
+
+
+
+/* 10주차 연습문제
+// login_failed 함수: 로그인 실패 횟수를 증가시키고 제한 상태를 확인하는 함수
+const login_failed = () => {
+    let failCnt = getCookie("login_fail_cnt"); // 기존 로그인 실패 횟수 가져오기
+    failCnt = failCnt ? parseInt(failCnt) + 1 : 1; // 기존 횟수가 없으면 1로 초기화
+    setCookie("login_fail_cnt", failCnt, 1); // 쿠키에 로그인 실패 횟수 저장 (1일 동안 유지)
+
+    if (failCnt >= 3) {
+        // 로그인 제한 상태일 때
+        alert("로그인 제한 상태입니다. 잠시 후 다시 시도해주세요.");
+        document.getElementById("login_btn").disabled = true; // 로그인 버튼 비활성화
+    } else {
+        // 로그인 제한 상태가 아닐 때
+        alert("로그인 실패 횟수: " + failCnt);
+        document.getElementById("login_btn").disabled = false; // 로그인 버튼 활성화
+    }
+};
+
+// 로그인 버튼 클릭 시 login_failed 함수 호출
+document.getElementById("login_btn").addEventListener('click', login_failed);
+
+// 초기화 함수: 쿠키 초기화 및 로그인 버튼 활성화
+const resetCookies = () => {
+    setCookie("login_fail_cnt", 0, 1); // 로그인 실패 횟수 쿠키 초기화
+    document.getElementById("login_btn").disabled = false; // 로그인 버튼 활성화
+};
+
+// 문서 로드 시 초기화 함수 호출
+window.onload = resetCookies;
+*/
+
+
+/* 12, 13주차 연습문제
+// login 함수: 로그인 시 쿠키와 세션 설정 및 로그인 시간 유지
+const login = () => {
+    // 쿠키에 로그인 시간 저장 (5분 유지)
+    setCookie("login_time", new Date().getTime(), 5/1440); // 5분은 5/1440로 계산
+    // 세션 생성
+    session_set();
+    // 추가적인 로그인 동작 구현...
+};
+
+// logout 함수: 로그아웃 시 쿠키와 세션 삭제 후 메인 페이지로 이동
+const logout = () => {
+    // 쿠키와 세션 삭제
+    deleteCookie("login_time");
+    session_del();
+    // 메인 페이지로 이동
+    window.location.href = "/main.html";
+};
+
+// checkLoginTime 함수: 로그인 시간 확인 후 자동 로그아웃
+const checkLoginTime = () => {
+    const loginTime = getCookie("login_time");
+    if (loginTime) {
+        const currentTime = new Date().getTime();
+        const elapsedTime = currentTime - parseInt(loginTime);
+        const fiveMinutesInMillis = 5 * 60 * 1000; // 5분을 밀리초로 변환
+        if (elapsedTime >= fiveMinutesInMillis) {
+            // 5분이 지났으면 자동 로그아웃
+            logout();
+        } else {
+            // 5분이 지나지 않았으면 다음 체크를 예약하고 계속 유지
+            setTimeout(checkLoginTime, fiveMinutesInMillis - elapsedTime);
+        }
+    }
+};
+
+// 초기화 함수: 페이지 로드 시 로그인 시간 체크 시작
+const init = () => {
+    checkLoginTime();
+};
+
+// 문서 로드 시 초기화 함수 호출
+window.onload = init;
+*/

@@ -98,3 +98,15 @@ function session_get(){ //세션 읽기
     }
 }
 
+
+/* 14주차 응용 문제
+// session_join_get 함수를 추가하여 암호화된 객체를 반환하는 역할을 합니다.
+function session_join_get() {
+    return sessionStorage.getItem("Session_Storage_new_user_encrypted");
+}
+
+// 기존 세션의 GET 함수를 가져와서 사용합니다.
+function session_get() {
+    return sessionStorage.getItem("Session_Storage_encrypted");
+}
+*/
