@@ -7,7 +7,7 @@
 This project is a starting point for a Web application.
 
 - [http://127.0.0.1:5500/index.](https://github.com/surim-rim/WEB_MAIN)
-ㅌ
+
 
 ## 2주차 수업 메인화면 개발 완료! (문제 포함)
 기본 화면 구현, 내가 생각한 데이터로 수정(로고 이미지, 메뉴 텍스트, 배경이미지 등)
