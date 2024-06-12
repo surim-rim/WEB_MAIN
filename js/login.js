@@ -174,3 +174,32 @@ function login_count() {
     setCookie('login_cnt', loginCount, 7); // 7일 동안 유지되는 쿠키로 설정
     console.log('Login Count:', loginCount); // 콘솔에 로그인 카운트 표시
 }
+
+
+// login.js
+
+let loginAttempts = parseInt(getCookie('loginAttempts')) || 0; // 초기화 및 쿠키에서 로그인 시도 횟수 가져오기
+
+const maxLoginAttempts = 3; // 최대 로그인 시도 횟수
+
+// 로그인 시도 함수
+const login = () => {
+    const emailInput = document.getElementById('form3Example3').value;
+    const passwordInput = document.getElementById('form3Example4').value;
+
+    // 로그인 시도 횟수 증가
+    loginAttempts++;
+    setCookie('loginFailed', loginAttempts, 1/1440); // 로그인 시도 횟수 쿠키에 저장 (1분 유효)
+
+
+    // 예를 들어, 여기서 실제 로그인 시도를 수행하고 로그인이 실패하면 아래의 코드를 실행합니다.
+    // 여기서는 로그인 시도를 실패로 가정합니다.
+
+    if (loginAttempts >= maxLoginAttempts) {
+        alert('로그인 시도가 3회 이상 실패하여 로그인이 제한되었습니다.');
+        document.getElementById('login_btn').disabled = true; // 로그인 버튼 비활성화
+    }
+};
+
+document.getElementById('login_btn').addEventListener('click', login);
+
