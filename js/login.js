@@ -189,7 +189,7 @@ const login = () => {
 
     // 로그인 시도 횟수 증가
     loginAttempts++;
-    setCookie('loginFailed', loginAttempts, 1/1440); // 로그인 시도 횟수 쿠키에 저장 (1분 유효)
+    setCookie('loginFailed', loginAttempts, 1/24); // 로그인 시도 횟수 쿠키에 저장 (1시간 유효)
 
 
     // 예를 들어, 여기서 실제 로그인 시도를 수행하고 로그인이 실패하면 아래의 코드를 실행합니다.
